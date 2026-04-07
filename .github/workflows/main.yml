@@ -3,8 +3,6 @@ name: Build Minecraft Mod
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -18,7 +16,10 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17' # для 1.18+ (если старый мод — скажи, поменяю)
+          java-version: '17'
+
+      - name: 🔑 Make gradlew executable
+        run: chmod +x ./gradlew
 
       - name: ⚙️ Setup Gradle
         uses: gradle/actions/setup-gradle@v5
