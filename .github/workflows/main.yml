@@ -1,41 +1,33 @@
-name: Build Mod
+name: Build Minecraft Mod
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: ☕ Setup Java
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
           distribution: 'temurin'
+          java-version: '17' # для 1.18+ (если старый мод — скажи, поменяю)
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+      - name: ⚙️ Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: 🛠 Build mod
+        run: ./gradlew build
 
-      - name: Build with Gradle
-        run: |
-          rm -rf build .gradle \~/.gradle/caches
-          ./gradlew clean --no-daemon
-          ./gradlew build --refresh-dependencies --no-daemon --rerun-tasks
-
-      - name: Upload JAR artifact
+      - name: 📦 Upload JAR
         uses: actions/upload-artifact@v4
         with:
-          name: gravity-gauntlet-mod
+          name: minecraft-mod
           path: build/libs/*.jar
-          retention-days: 90
