@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "gravitygauntlet",
+	"version": "${version}",
+	"name": "Gravity Gauntlet",
+	"description": "Capture blocks and make them orbit around you, then shoot them at enemies!",
+	"authors": [
+		"daniil148852"
+	],
+	"contact": {
+		"homepage": "https://github.com/daniil148852/Gravitypull-3.0",
+		"sources": "https://github.com/daniil148852/Gravitypull-3.0"
+	},
+	"license": "MIT",
+	"icon": "assets/gravitygauntlet/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"me.daniil148852.gravitygauntlet.GravityMod"
+		]
+	},
+	"mixins": [
+		"gravitygauntlet.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.0",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+	}
+}

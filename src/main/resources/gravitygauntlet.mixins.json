@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "me.daniil148852.gravitygauntlet.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"FallingBlockEntityMixin",
+		"FallingBlockEntityAccessor"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
